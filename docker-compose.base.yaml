@@ -14,10 +14,22 @@ services:
       - dbdata:/var/opt/mssql
     networks:
       - backend
-
+  
+  app-blue:
+    image: docker.io/ttmartinksdocket/tp3-web:blue
+    container_name: tp3-web-blue
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=AppCustomerDiiageDbe;User=${SQLSERVER_USER};Password=${SQLSERVER_PASSWORD};TrustServerCertificate=True;
+    networks:
+      - backend
+      
 volumes:
   dbdata:
 
 networks:
   backend:
     driver: bridge
+    external: true

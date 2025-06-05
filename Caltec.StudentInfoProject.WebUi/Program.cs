@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Server=db,1433;Database=AppCustomerDiiageDbe;User=sa;Password=Admin123!;TrustServerCertificate=True;";
-
-Console.WriteLine($"CONNEXION: {connectionString}");
+// Lis la variable d'environnement explicitement
+string connectionString = "Server=db,1433;Database=AppCustomerDiiageDbe;User=sa;Password=Admin1234!;TrustServerCertificate=True;";
 
 // Add services to the container.
 builder.Services.AddRazorPages();

@@ -10,3 +10,8 @@ services:
       - ConnectionStrings__DefaultConnection=Server=db,1433;Database=AppCustomerDiiageDbe;User=${SQLSERVER_USER};Password=${SQLSERVER_PASSWORD};TrustServerCertificate=True;
     networks:
       - backend
+
+networks:
+  backend:
+    driver: bridge
+    external: true
