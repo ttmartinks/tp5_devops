@@ -1,0 +1,23 @@
+
+services:
+  db:
+    image: exoplatform/sqlserver:latest
+    container_name: sqlserver-db3
+    restart: always
+    environment:
+      SA_PASSWORD: ${SQLSERVER_PASSWORD}
+      ACCEPT_EULA: "Y"
+      SQLSERVER_DATABASE: AppCustomerDiiageDbe
+      SQLSERVER_USER: ${SQLSERVER_USER}
+      SQLSERVER_PASSWORD: ${SQLSERVER_PASSWORD}
+    volumes:
+      - dbdata:/var/opt/mssql
+    networks:
+      - backend
+
+volumes:
+  dbdata:
+
+networks:
+  backend:
+    driver: bridge

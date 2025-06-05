@@ -4,9 +4,12 @@ using Caltec.StudentInfoProject.Persistence.Initializer;
 using Caltec.Dependency;
 using Microsoft.EntityFrameworkCore;
 
-string connectionString = @"Server=.\SQLExpress;Database=AppCustomerDiiageDbe;Trusted_Connection=Yes;";
-
 var builder = WebApplication.CreateBuilder(args);
+
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? "Server=db,1433;Database=AppCustomerDiiageDbe;User=sa;Password=Admin123!;TrustServerCertificate=True;";
+
+Console.WriteLine($"CONNEXION: {connectionString}");
 
 // Add services to the container.
 builder.Services.AddRazorPages();

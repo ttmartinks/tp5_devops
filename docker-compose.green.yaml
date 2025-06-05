@@ -1,0 +1,12 @@
+
+services:
+  app-green:
+    image: docker.io/ttmartinksdocket/tp3-web:green
+    container_name: tp3-web-green
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=AppCustomerDiiageDbe;User=${SQLSERVER_USER};Password=${SQLSERVER_PASSWORD};TrustServerCertificate=True;
+    networks:
+      - backend
